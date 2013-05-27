@@ -7,10 +7,6 @@
 <html class="no-js" lang="en">
 <!--<![endif]-->
 
-<!--
-TODO: Have google books update the page number. 
--->
-
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
@@ -53,16 +49,66 @@ TODO: Have google books update the page number.
 
 
 	<script type="text/javascript">
+
 		function nextStep(bookViewer) {
+
 			window.setTimeout(
 				function() {
 					nextStep(bookViewer);
 				}, 100
 			);
+
 			document.getElementById("number").innerHTML = bookViewer.getPageNumber();
+			document.getElementById("text").innerHTML = getText(bookViewer.getPageNumber());
 
+		}
 
+		function getText(pageNumber) {
+			if (pageNumber == undefined) {
+				return "The page number here is undefined because this is still the beginning of the book."
+			}
 
+			if (pageNumber == 2) {
+				return "There is a picture of Benjamin Blake Minor."
+			} 
+
+			if (pageNumber == 3) {
+				return "This is the title page."
+			} 
+
+			if (pageNumber == 5) {
+				return "This is the dedication page."
+			} 
+
+			if (pageNumber == 7) {
+				return "The table of contents."
+			} 
+
+			if (pageNumber == 9) {
+				return "The illustrations."
+			}
+
+			if (pageNumber == 12) {
+				return "The preface."
+			}
+
+			if (pageNumber == 36) {
+				return "An illustration of Edgar Allan Poe."
+			}
+
+			if (pageNumber > 12 && pageNumber < 35) {
+				return "The First Volume."
+			}
+
+			if (pageNumber > 34) {
+				return "The Second Volume."
+			}
+
+			if (pageNumber > 61) {
+				return "The Third Volume"
+			}
+
+			else{return "There is no information associated with this page.";}
 		}
 	</script>
 
@@ -74,7 +120,7 @@ TODO: Have google books update the page number.
 		<div class="row">
 			
 			<div class="large-5 columns">
-				<div class = "title">Magazine World</div>
+				<div class = "title"><a href="index.html">Magazine World</a></div>
 			</div>
 			
 			<nav>
@@ -94,7 +140,7 @@ TODO: Have google books update the page number.
 				
 				<div class="large-2 small-2 columns">
 					<a href="#" data-dropdown="drop1" class="small secondary button dropdown">
-						Home
+						Navigation
 					</a>
 					<ul id="drop1" class="f-dropdown" data-dropdown-content>
 						<li><a href="index.html#about">About</a></li>
@@ -119,37 +165,50 @@ TODO: Have google books update the page number.
 				</div>
 			</div>
 		</article>
-		
+
 		<aside>
 			<div class = "large-4 columns">
 				<div class="topboxtitle" id="about">Document Info</div>
 				<div class="topbox">
 
-					<p>Current page number: <span id="number">undefined</span></p>
+					<h5>Current page number</h5> <p id="number">undefined</p>
 
-					<p>Current page information:<br />
-					<span id="text">none</span></p>
+					<h5>Current page information</h5>
+					<p id="text">none</p>
+					<h5>Notes</h5>
+					<div class="bookNav">
+					<ul>
 
-					<ul class="bookNav">
 						<li>
-							<a href="javascript:bookViewer.nextPage()">Next page</a>
+							<a href="javascript:void(bookViewer.goToPage(13))">13 - The beginning of the first volume.</a>
 						</li>
+
 						<li>
-							<a href="javascript:bookViewer.previousPage()">Prev page</a>
+							<a href="javascript:void(bookViewer.goToPage(35))">36 - The beginning of the second volume.</a>
 						</li>
+
 						<li>
-							<a href="javascript:bookViewer.zoomIn()">Zoom in</a>
+							<a href="javascript:void(bookViewer.goToPage(36))">36 - The text before an illustration of Edgar Allan Poe.</a>
 						</li>
+
 						<li>
-							<a href="javascript:bookViewer.zoomOut()">Zoom out</a>
+							<a href="javascript:void(bookViewer.goToPage(61))">61 - The beginnning of the third volume.</a>
 						</li>
-						<li>
-							<a href="javascript:void(bookViewer.goToPage(15))">Go to page 15</a>
-						</li>
+
+					</ul>
+				</ul>
+				<h5>Highlights</h5>
+					<div class="bookNav">
+						<ul>
 						<li>
 							<a href="javascript:bookViewer.highlight('Poe')">Highlight occurrences of "Poe"</a>
 						</li>
+
+						<li>
+							<a href="javascript:bookViewer.highlight('')">Turn off highlighting</a>
+						</li>
 					</ul>
+				</div>
 				</div>
 			</div>
 		</aside>
