@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="en">
+<![endif]-->
+<!--[if gt IE 8]>
+<!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Foundation 4</title>
+
+	<link rel="stylesheet" href="css/normalize.css" />
+	<!-- If you are using CSS version, add this -->
+	<link rel="stylesheet" href="css/foundation.css" />
+	<link rel="stylesheet" href="css/app.css" />
+
+	<script src="js/vendor/custom.modernizr.js"></script>
+	
+	<link href='http://fonts.googleapis.com/css?family=Playfair+Display+SC|Cardo:400,400italic,700' rel='stylesheet' type='text/css'>
+
+	<script type="text/javascript" src="//www.google.com/jsapi"></script>
+
+	<script type="text/javascript">
+		google.load("books", "0");
+		var bookViewer;
+
+		function initialize(isbn) {
+			var viewerDiv = document.getElementById("viewerCanvas");
+			bookViewer = new google.books.DefaultViewer(viewerDiv);
+			bookViewer.load(isbn, handleNotFound);
+			nextStep(bookViewer);
+		}
+
+		function handleNotFound() {
+			// Developer may want to hide the viewer div or present an error
+			alert("Error loading the book preview!");
+		}
+
+		google.setOnLoadCallback(function() {
+			initialize("8wVlAAAAMAAJ")
+		});
+	</script>
+
+</head>
+
+<body>
+
+	<header>
+		<div class="row">
+			
+			<div class="large-5 columns">
+				<div class = "title">Magazine World</div>
+			</div>
+			
+			<nav>
+				
+				<div class="large-5 small-10 columns">
+					<form>
+						<div class="row collapse">
+							<div class="small-10 columns">
+								<input type="text" placeholder="">
+							</div>
+							<div class="small-2 columns">
+								<a href="#" class="button prefix">Search</a>
+							</div>
+						</div>
+					</form>
+				</div>
+				
+				<div class="large-2 small-2 columns">
+					<a href="#" data-dropdown="drop1" class="small secondary button dropdown">
+						Home
+					</a>
+					<ul id="drop1" class="f-dropdown" data-dropdown-content>
+						<li><a href="index.html#about">About</a></li>
+						<li><a href="index.html#magazines">Magazines</a></li>
+						<li><a href="index.html#glossary">Glossary</a></li>
+					</ul>
+				</div>
+
+			</nav>
+
+		</div>
+	</header>
+
+	<div class = "row">
+		
+		<div class = "large-9 columns">
+			<div class="midboxtitle" id="magazines">Magazines</div>
+			<div class="midbox">
+				<div id="viewerCanvas" style="width: 100%; height: 800px; padding-bottom: 2em;">
+					The viewer for this book has not loaded.
+				</div>
+			</div>
+		</div>
+
+		<div class = "large-3 columns">
+			<div class="topboxtitle" id="about">Document Info</div>
+			<div class="topbox">
+				<ul>
+					<li>
+						<a href="javascript:bookViewer.nextPage()">Next page</a>
+					</li>
+					<li>
+						<a href="javascript:bookViewer.previousPage()">Prev page</a>
+					</li>
+					<li>
+						<a href="javascript:bookViewer.zoomIn()">Zoom in</a>
+					</li>
+					<li>
+						<a href="javascript:bookViewer.zoomOut()">Zoom out</a>
+					</li>
+					<li>
+						<a>Current page number:
+
+						<script type="text/javascript">
+							function nextStep(bookViewer) {
+								window.setTimeout(
+								function() {
+									bookViewer.nextPage();
+									nextStep(bookViewer);
+								}, 3000);
+								document.getElementById("number").innerHTML 
+								= bookViewer.getPageNumber();
+							}
+						</script>
+
+						<div id="number">undefined</div>
+						</a>
+					</li>
+
+					<li>
+						<a href="javascript:void(bookViewer.goToPage(15))">Go to page 15</a>
+					</li>
+					<li>
+						<a href="javascript:bookViewer.highlight('Poe')">Highlight occurrences of "Poe"</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<div class="row">
+			<div class="12-large columns">
+				<img width="100" src="img/whitelsu.png" />
+				| This site is an LSU initiative.
+			</div>
+		</div>
+	</footer>
+
+	<script> document.write('<script src=' + ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') + '.js><\/script>')</script>
+	<script src="js/foundation/foundation.js"></script>
+	<script src="js/foundation/foundation.alerts.js"></script>
+	<script src="js/foundation/foundation.clearing.js"></script>
+	<script src="js/foundation/foundation.cookie.js"></script>
+	<script src="js/foundation/foundation.dropdown.js"></script>
+	<script src="js/foundation/foundation.forms.js"></script>
+	<script src="js/foundation/foundation.joyride.js"></script>
+	<script src="js/foundation/foundation.magellan.js"></script>
+	<script src="js/foundation/foundation.orbit.js"></script>
+	<script src="js/foundation/foundation.placeholder.js"></script>
+	<script src="js/foundation/foundation.reveal.js"></script>
+	<script src="js/foundation/foundation.section.js"></script>
+	<script src="js/foundation/foundation.tooltips.js"></script>
+	<script src="js/foundation/foundation.topbar.js"></script>
+	<script>$(document).foundation();</script>
+</body>
+</html>
