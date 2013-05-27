@@ -7,6 +7,10 @@
 <html class="no-js" lang="en">
 <!--<![endif]-->
 
+<!--
+TODO: Have google books update the page number. 
+-->
+
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
@@ -25,6 +29,7 @@
 
 	<script type="text/javascript">
 		google.load("books", "0");
+		
 		var bookViewer;
 
 		function initialize(isbn) {
@@ -39,9 +44,26 @@
 			alert("Error loading the book preview!");
 		}
 
-		google.setOnLoadCallback(function() {
-			initialize("8wVlAAAAMAAJ")
-		});
+		google.setOnLoadCallback(
+			function() {
+				initialize("8wVlAAAAMAAJ")
+			}
+		);
+	</script>
+
+
+	<script type="text/javascript">
+		function nextStep(bookViewer) {
+			window.setTimeout(
+				function() {
+					nextStep(bookViewer);
+				}, 100
+			);
+			document.getElementById("number").innerHTML = bookViewer.getPageNumber();
+
+
+
+		}
 	</script>
 
 </head>
@@ -87,66 +109,56 @@
 	</header>
 
 	<div class = "row">
-		
-		<div class = "large-9 columns">
-			<div class="midboxtitle" id="magazines">Magazines</div>
-			<div class="midbox">
-				<div id="viewerCanvas" style="width: 100%; height: 800px; padding-bottom: 2em;">
-					The viewer for this book has not loaded.
+		<article>
+			<div class = "large-8 columns">
+				<div class="midboxtitle" id="magazines">Magazines</div>
+				<div class="midbox">
+					<div id="viewerCanvas" style="">
+						The viewer for this book has not loaded.
+					</div>
 				</div>
 			</div>
-		</div>
+		</article>
+		
+		<aside>
+			<div class = "large-4 columns">
+				<div class="topboxtitle" id="about">Document Info</div>
+				<div class="topbox">
 
-		<div class = "large-3 columns">
-			<div class="topboxtitle" id="about">Document Info</div>
-			<div class="topbox">
-				<ul>
-					<li>
-						<a href="javascript:bookViewer.nextPage()">Next page</a>
-					</li>
-					<li>
-						<a href="javascript:bookViewer.previousPage()">Prev page</a>
-					</li>
-					<li>
-						<a href="javascript:bookViewer.zoomIn()">Zoom in</a>
-					</li>
-					<li>
-						<a href="javascript:bookViewer.zoomOut()">Zoom out</a>
-					</li>
-					<li>
-						<a>Current page number:
+					<p>Current page number: <span id="number">undefined</span></p>
 
-						<script type="text/javascript">
-							function nextStep(bookViewer) {
-								window.setTimeout(
-								function() {
-									bookViewer.nextPage();
-									nextStep(bookViewer);
-								}, 3000);
-								document.getElementById("number").innerHTML 
-								= bookViewer.getPageNumber();
-							}
-						</script>
+					<p>Current page information:<br />
+					<span id="text">none</span></p>
 
-						<div id="number">undefined</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="javascript:void(bookViewer.goToPage(15))">Go to page 15</a>
-					</li>
-					<li>
-						<a href="javascript:bookViewer.highlight('Poe')">Highlight occurrences of "Poe"</a>
-					</li>
-				</ul>
+					<ul class="bookNav">
+						<li>
+							<a href="javascript:bookViewer.nextPage()">Next page</a>
+						</li>
+						<li>
+							<a href="javascript:bookViewer.previousPage()">Prev page</a>
+						</li>
+						<li>
+							<a href="javascript:bookViewer.zoomIn()">Zoom in</a>
+						</li>
+						<li>
+							<a href="javascript:bookViewer.zoomOut()">Zoom out</a>
+						</li>
+						<li>
+							<a href="javascript:void(bookViewer.goToPage(15))">Go to page 15</a>
+						</li>
+						<li>
+							<a href="javascript:bookViewer.highlight('Poe')">Highlight occurrences of "Poe"</a>
+						</li>
+					</ul>
+				</div>
 			</div>
-		</div>
+		</aside>
 	</div>
 
 	<footer>
 		<div class="row">
 			<div class="12-large columns">
-				<img width="100" src="img/whitelsu.png" />
+				<img width="100" alt="" src="img/whitelsu.png" />
 				| This site is an LSU initiative.
 			</div>
 		</div>

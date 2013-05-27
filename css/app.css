@@ -37,6 +37,24 @@ header nav {
   padding: 1.25em;
 }
 
+.topboxtitle {
+  padding: 0.75em;
+  background-color: rgb(0,0,0);
+  font-family: 'Cardo', serif;
+  font-size: 18pt;
+  font-weight: bold;
+  color: #fff;
+}
+
+.topbox h3 {
+  background-color: rgba(29,10,15,1);
+  color: #fff;
+}
+
+.topbox p{
+  color: #fff;
+}
+
 .midbox {
   background-color: rgba(0,20,0,0.75);
   border-style: solid;
@@ -44,6 +62,34 @@ header nav {
   border-color: #000;
   margin-bottom: 1.25em;
   padding: 1.25em;
+}
+
+.midbox li p {
+  background-color: white;
+  color: #000;
+}
+
+.midbox ul {
+  padding-top: .5em;
+  text-align: center;
+}
+
+.midboxtitle {
+  padding: 0.75em;
+  background-color: rgb(0,0,0);
+  font-family: 'Cardo', serif;
+  font-size: 18pt;
+  font-weight: bold;
+  color: #fff;
+}
+
+.midbox p{
+  color: #fff;
+}
+
+.midbox li img {
+    background-color: white;
+    padding: 1em;
 }
 
 .botbox {
@@ -58,14 +104,13 @@ header nav {
   -moz-columns:100px 4; /* Firefox */
 }
 
-.midbox li p {
-  background-color: white;
-  color: #000;
-}
-
-.midbox ul {
-  padding-top: .5em;
-  text-align: center;
+.botboxtitle {
+  padding: 0.75em;
+  background-color: rgb(0,0,0);
+  font-family: 'Cardo', serif;
+  font-size: 18pt;
+  font-weight: bold;
+  color: #fff;
 }
 
 .botbox ul {
@@ -77,55 +122,36 @@ header nav {
   padding-left: 1em;
 }
 
-.midbox li img {
-    background-color: white;
-    padding: 1em;
-}
-
-.topboxtitle {
-  padding: 0.75em;
-  background-color: rgb(0,0,0);
-  font-family: 'Cardo', serif;
-  font-size: 18pt;
-  font-weight: bold;
-  color: #fff;
-}
-
-.midboxtitle {
-  padding: 0.75em;
-  background-color: rgb(0,0,0);
-  font-family: 'Cardo', serif;
-  font-size: 18pt;
-  font-weight: bold;
-  color: #fff;
-}
-
-.botboxtitle {
-  padding: 0.75em;
-  background-color: rgb(0,0,0);
-  font-family: 'Cardo', serif;
-  font-size: 18pt;
-  font-weight: bold;
-  color: #fff;
-}
-
-.topbox p{
-  color: #fff;
-}
-
-.midbox p{
-  color: #fff;
-}
-
 .botbox {
   color: #fff;
   overflow: scroll;
   height: 400px;
 }
 
-.topbox h3 {
-  background-color: rgba(29,10,15,1);
-  color: #fff;
+aside {
+  /*position: fixed;
+  top:0px;
+  right:0px;
+  width:500px;
+  overflow-x:hidden;
+  overflow-y:auto;*/
+  /*float: right;*/
+}
+
+#viewerCanvas {
+  width: 100%; 
+  height: 75vh;
+  overflow: hidden; 
+  /*padding-bottom: 2em;*/
+}
+
+.bookNav {
+  border-top: 1px dotted white;
+  padding-top: 1em;
+  }
+
+.bookNav li{
+  list-style-type: none;
 }
 
 footer {
